@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>混合开发视频通讯</title>
+    <style>
+        .btn {
+            text-align: center;
+            color: #fff;
+            background: #e67e22;
+            padding: 20px 15px;
+            margin: 50px;
+            font-size: 22px;
+            border-radius: 5px;
+            box-shadow: 5px 4px 10px rgba(0,0,0,.3);
+        }
+    </style>
+    <script src="dsbridge.js"></script>
+</head>
+<body>
+
+    <div class="btn" onclick="synCall()">同步调用</div>
+    <div class="btn" onclick="asynCall()">异步调用</div>
+
+    <script>
+        function synCall() {
+            alert(dsBridge.call('synchronizedCall', 'test sync'));
+        }
+
+        function asynCall() {
+            dsBridge.call('asynchronizedCall', 'test async', function(v){
+                alert(v)
+            });
+        }
+    </script>
+</body>
+</html>

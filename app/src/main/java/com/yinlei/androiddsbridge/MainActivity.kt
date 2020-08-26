@@ -1,5 +1,6 @@
 package com.yinlei.androiddsbridge
 
+import android.graphics.PixelFormat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -11,9 +12,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        window.setFormat(PixelFormat.TRANSLUCENT)
+
         // js调用java
         webView.addJavascriptObject(JSInterfaceUtil(), "")
-        webView.addJavascriptObject(VideoAPI(), "")
+        webView.addJavascriptObject(VideoAPI(this), "")
         webView.loadUrl("file:///android_asset/video.html")
 
 
@@ -31,5 +34,12 @@ class MainActivity : AppCompatActivity() {
 //                    Toast.makeText(this@MainActivity, it, Toast.LENGTH_LONG).show()
 //                })
 //        }
+    }
+
+
+    override fun onBackPressed() {
+        if (!VideoAPI.onBackPressed()) {
+            super.onBackPressed()
+        }
     }
 }

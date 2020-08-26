@@ -26,6 +26,7 @@
     <div class="btn" onclick="asynCall()">异步调用</div>
 
     <script>
+        //js调用android
         function synCall() {
             alert(dsBridge.call('synchronizedCall', 'test sync'));
         }
@@ -35,6 +36,14 @@
                 alert(v)
             });
         }
+
+        // android调用js
+        dsBridge.register('toUpper', function(str) {
+            return str.toUpperCase();
+        });
+       dsBridge.registerAsyn('testAsyn', function(cb) {
+            cb('Async Call success');
+        });
     </script>
 </body>
 </html>

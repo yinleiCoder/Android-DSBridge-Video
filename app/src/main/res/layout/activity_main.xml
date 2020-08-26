@@ -10,5 +10,14 @@
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
+    <Button
+        android:id="@+id/btnJavaSyncCallJs"
+        android:text="java同步调用js"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnJavaAsyncCallJs"
+        android:text="java异步调用js"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </FrameLayout>
